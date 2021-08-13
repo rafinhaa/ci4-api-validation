@@ -73,16 +73,16 @@ $routes->group("api", ["namespace" => "App\Controllers\Api"] , function($routes)
 });
 ```
 
-Get all users. Method: GET
+#### Get all users. Method: GET
 http://localhost:8080/api/users/list
 
-Get single user. Method: GET
+#### Get single user. Method: GET
 http://localhost:8080/api/users/single/2
 
-Create an user. POST multipart with username and email.
+#### Create an user. POST multipart with username and email.
 http://localhost:8080/api/users/add
 
-Update an user. Verb HTTP PUT with name and email.
+#### Update an user. Verb HTTP PUT with name and email.
 http://localhost:8080/api/users/update/4
 ```json
 {
@@ -91,7 +91,7 @@ http://localhost:8080/api/users/update/4
 }
 ```
 
-Delete an user. Verb HTTP DELETE.
+#### Delete an user. Verb HTTP DELETE.
 http://localhost:8080/api/users/delete/4
 
 ## 📄 Changelog
