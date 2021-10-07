@@ -55,7 +55,7 @@ php spark migrate
 #### Execute seeders
 
 ```bash
-php spark db:seed Users
+php spark db:seed UsersSeeder
 ```
 
 ## ℹ️ Info
