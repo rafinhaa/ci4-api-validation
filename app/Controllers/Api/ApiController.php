@@ -12,7 +12,7 @@ class ApiController extends ResourceController
 	 * @return mixed
 	 */
 	public function listUsers()
-	{
+	{		
 		$usersModel = new \App\Models\UsersModel;
 		$data = $usersModel->findAll();
 		if(!$data){
@@ -79,7 +79,7 @@ class ApiController extends ResourceController
 			$response = [
 				'status' => 500,
 				'error' => true,
-				'message' => $this->validator->getErrors(),
+				'messages' => $this->validator->getErrors(),
 				'data' => [],
 			];
 			return $this->respond($response,500); //500 Internal Server Error
@@ -93,15 +93,19 @@ class ApiController extends ResourceController
 			$response = [
 				'status' => 201,
 				'error' => false,
-				'message' => 'Added user with id ' . $usersModel->getInsertID(),
-				'data' => []
+				'messages' => 'Added user with id ' . $usersModel->getInsertID(),
+				'data' => [
+					'id' => $usersModel->getInsertID(),
+					'username' => $data['username'],
+					'email' => $data['email'],
+				]
 			];
 			return $this->respondCreated($response); //201 Created
 		}
 		$response = [
 			'status' => 500,
 			'error' => true,
-			'message' => [
+			'messages' => [
 				'error' => 'Error saving user',
 			],
 			'data' => [],
@@ -140,7 +144,7 @@ class ApiController extends ResourceController
 			$response = [
 				'status' => 500,
 				'error' => true,
-				'message' => $this->validator->getErrors(),
+				'messages' => $this->validator->getErrors(),
 				'data' => [],
 			];
 			return $this->respond($response,500); //500 Internal Server Error
@@ -156,7 +160,7 @@ class ApiController extends ResourceController
 				$response = [
 					'status' => 200,
 					'error' => false,
-					'message' => 'Updated user with id ' . $id,
+					'messages' => 'Updated user with id ' . $id,
 					'data' => []
 				];
 				return $this->respondCreated($response); //200 OK
@@ -164,7 +168,7 @@ class ApiController extends ResourceController
 			$response = [
 				'status' => 500,
 				'error' => true,
-				'message' => [
+				'messages' => [
 					'error' => 'Error saving user',
 				],
 				'data' => [],
